@@ -1,6 +1,6 @@
 # vue-website
 
-# [页面展示](http://chenguini.top) 
+# [页面展示](http://chenguini.top) (http://chenguini.top) 
 
 > website code
 
