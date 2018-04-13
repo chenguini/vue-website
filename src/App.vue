@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style>
-body,div,ul,li,p,h3,h4 {
+body,div,ul,li,p,h2,h3,h4,img {
   margin: 0;
   padding: 0;
 }
@@ -36,7 +36,7 @@ body {
   height: 100%;
 }
 .middle {
-  margin-top: 25px;
+  margin-top: 75px;
   text-align: center;
   /*font-size: 0; 清除两个inline-block之间的间隔*/
 }
@@ -52,4 +52,17 @@ ul {
 a {
   text-decoration: none;
 }
+.home {
+    width: 55%;
+    display: inline-block;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    font-size: 16px;
+  }
+  @media screen and (max-width: 700px) {
+    .home {
+      width: 80%;
+    }
+  }
+
 </style>

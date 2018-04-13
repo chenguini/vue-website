@@ -4,7 +4,7 @@
       <icon name="tree1" scale="4"></icon>
     </div>
     <div class="content">
-      <p>可爱的女汉子</p>
+      <p>平安喜乐，万事胜意</p>
     </div>
   </div>
 </template>
@@ -28,7 +28,6 @@
   .icon {
     width: 37px;
     height: 37px;
-    left: 15%;
     position: relative;
     animation:myfirst 5s linear 2s infinite alternate;
     /* Firefox: */

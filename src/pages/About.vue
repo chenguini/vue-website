@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<div>about</div>
+	<div class="home">
+		<div>功能完善中</div>
 	</div>
 </template>
 

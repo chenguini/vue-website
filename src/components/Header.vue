@@ -1,11 +1,13 @@
 <template>
 	<div class="header">
-		<div class="icon">
-			<icon name="logo" scale="4"></icon>
-		</div>
-		<div class="name">博客</div>
+		<router-link to="/home">
+			<div class="icon">
+				<icon name="logo" scale="4"></icon>
+			</div>
+			<div class="name">博客</div>
+		</router-link>
 		<ul>
-			<li><router-link class="nav-item" to="/">首页</router-link></li>
+			<li><router-link class="nav-item" to="/home">首页</router-link></li>
 			<li><router-link class="nav-item" to="/list">文章</router-link></li>
 			<li><router-link class="nav-item" to="/about">列表</router-link></li>
 			<li><router-link class="nav-item" to="/myblog">我的博客</router-link></li>
@@ -27,13 +29,15 @@
 <style scoped>
 	.header {
 		height: 60px;
+		width: 100%;
 		background-color: #fff;
 		color: #000;
 		border-bottom: 1px solid #ddd;
-		overflow: hidden;
+		position: fixed;
+		top: 0;
+		z-index: 10;
 	}
 	.header li {
-		float: left;
 		margin-left: 32px;
 		text-align: center;
 		line-height: 57px;
@@ -49,6 +53,7 @@
 		line-height: 57px;
 		font-size: 24px;
 		margin-left: 5px;
+		color: #000;
 	}
 	.nav-item {
 		display: block;
@@ -56,8 +61,9 @@
 	}
 	.nav-item:hover {
 		color: #ccc;
+		border-bottom: 3px solid #ccc;
 	}
-	.router-link-exact-active {
+	.router-link-active {
 		color: #ccc;
 		border-bottom: 3px solid #ccc;
 	}

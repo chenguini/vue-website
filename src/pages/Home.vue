@@ -11,7 +11,15 @@
 				<div class="swiper-button-next swiper-button-white" slot="button-next"></div> -->
 			</swiper>
 		</div>
-		
+		<ul class="main">
+			<li v-for="item in dataList">
+				<router-link :to="'/skill/' + item.s_id">
+					<h4>{{item.s_title}}</h4>
+					<p>{{contentLimit(item)}}</p>
+					<span class="day">发布时间：{{item.s_day}}</span>
+				</router-link>
+			</li>
+		</ul>
 	</div>
 </template>
 
@@ -27,7 +35,7 @@ Vue.use(VueAwesomeSwiper)
 		name:'home',
 		data (){
 			return {
-				data:'',
+				dataList:'',
 				pic:[
 					{
 						url:require('../assets/image/door.jpg')
@@ -66,29 +74,26 @@ Vue.use(VueAwesomeSwiper)
 		},
 		methods:{
 			getData() {
-				this.$http.get("http://127.0.0.1/bootstrap/skill.php"
+				this.$http.get("http://chenguini.top/skill.php"
 					)
 				.then(res=>{
-					this.data=res.data;
+					this.dataList=res.data;
 				}).catch(error=>console.log(error));
+			},
+			contentLimit(item) {
+				return  item.s_content.substr(0,145) + '...' ;
 			}
 		},
 		created() {
 			this.getData();
 
+		},computed: {
+			
 		}
 	}
 </script>
 
 <style scoped>
-	.home {
-		width: 700px;
-		display: inline-block;
-		border: 1px solid #ddd;
-		background-color: #fff;
-		vertical-align: top;
-		font-size: 16px;
-	}
 	.swiper {
 		padding: 25px;
 		width: 550px;
@@ -98,6 +103,35 @@ Vue.use(VueAwesomeSwiper)
 	.swiper img{
 		width: 550px;
 		height: 330px;
+	}
+	.main a {
+		text-align: left;
+		padding: 8px;
+		border-bottom: 1px dashed #ddd;
+		display: block;/*内联需变成块状不换行*/
+		overflow: hidden;
+	}
+	.main h4 {
+		padding: 5px;
+		color: #222;
+	}
+	.main p {
+		overflow:hidden; /*
+		text-overflow:ellipsis;
+		display:-webkit-box;
+		-webkit-box-orient:vertical;
+		-webkit-line-clamp:2; */
+		margin: 5px;
+		color: #666;
+	}
+	.day {
+		display: block;
+		text-align: right;
+		color: #999;
+		margin-right: 10px;
+	}
+	.main a:hover>p,a:hover>h4,a:hover>span {
+		color: #1E90FF;
 	}
 	
 </style>

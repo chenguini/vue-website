@@ -5,9 +5,6 @@ import Home from '@/pages/Home'
 import About from '@/pages/About'
 import List from '@/pages/List'
 import Skill from '@/pages/Skill'
-import Php from '@/pages/Php'
-import MySql from '@/pages/MySql'
-import Day from '@/pages/Day'
 
 Vue.use(Router)
 
