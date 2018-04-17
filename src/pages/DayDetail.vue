@@ -1,9 +1,9 @@
 <template>
 	<div class="home">
 		<div class="content-box">
-			<h3>{{dataList.s_title}}</h3>
-			<span>发布日期：{{dataList.s_day}}</span>
-			<pre >{{dataList.s_content}}</pre>
+			<h3>{{dataList.d_title}}</h3>
+			<span>发布日期：{{dataList.d_day}}</span>
+			<pre >{{dataList.d_content}}</pre>
 		</div>
 		
 	</div>
@@ -11,7 +11,7 @@
 
 <script>
 	export default {
-		name:'skill',
+		name:'daydetail',
 		data (){
 			return {
 				dataList:""
@@ -19,11 +19,11 @@
 		},
 		methods:{
 			getData() {
-				this.$http.get("http://chenguini.top/skill.php?s_id=" + this.$route.params.s_id
+				this.$http.get("http://chenguini.top/skill.php?d_id=" + this.$route.params.d_id
 					)
 				.then(res=>{
 					this.dataList=res.data;
-
+console.log(this.$route.params.d_id);
 					console.log(this.dataList);
 				}).catch(error=>console.log(error));
 			}

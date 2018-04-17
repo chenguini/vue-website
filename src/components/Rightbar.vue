@@ -46,7 +46,7 @@
 		},
 		methods:{
 			getLast() {
-				this.$http.get("http://chenguini.top/skill.php"
+				this.$http.get("http://chenguini.top/skill.php?last=last"
 					)
 				.then(res=>{
 					this.lastList=res.data;

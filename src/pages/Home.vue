@@ -96,42 +96,17 @@ Vue.use(VueAwesomeSwiper)
 <style scoped>
 	.swiper {
 		padding: 25px;
-		width: 550px;
-		height: 330px;
+		width: 80%;
 		margin: 0 auto;
 	}
 	.swiper img{
-		width: 550px;
-		height: 330px;
+		width: 100%;
+		height: 30%;
+		margin: 0 auto;
 	}
-	.main a {
-		text-align: left;
-		padding: 8px;
-		border-bottom: 1px dashed #ddd;
-		display: block;/*内联需变成块状不换行*/
-		overflow: hidden;
-	}
-	.main h4 {
-		padding: 5px;
-		color: #222;
-	}
-	.main p {
-		overflow:hidden; /*
-		text-overflow:ellipsis;
-		display:-webkit-box;
-		-webkit-box-orient:vertical;
-		-webkit-line-clamp:2; */
-		margin: 5px;
-		color: #666;
-	}
-	.day {
-		display: block;
-		text-align: right;
-		color: #999;
-		margin-right: 10px;
-	}
-	.main a:hover>p,a:hover>h4,a:hover>span {
-		color: #1E90FF;
-	}
-	
+	@media screen and (max-width: 700px) {
+    .swiper {
+      width: 80%;
+    }
+  }
 </style>
