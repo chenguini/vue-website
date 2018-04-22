@@ -1,5 +1,6 @@
 <template>
 	<div class="home">
+		<loading v-if="isShow"></loading>
 		<div class="content-box">
 			<h3>{{dataList.d_title}}</h3>
 			<span>发布日期：{{dataList.d_day}}</span>
@@ -14,7 +15,8 @@
 		name:'daydetail',
 		data (){
 			return {
-				dataList:""
+				dataList:"",
+				isShow:true
 			}
 		},
 		methods:{
@@ -23,12 +25,13 @@
 					)
 				.then(res=>{
 					this.dataList=res.data;
-console.log(this.$route.params.d_id);
-					console.log(this.dataList);
+					this.isShow = false;
+// console.log(this.$route.params.d_id);
+// 					console.log(this.dataList);
 				}).catch(error=>console.log(error));
 			}
 		},
-		created() {
+		mounted() {
 			this.getData();
 
 		},

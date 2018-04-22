@@ -1,5 +1,6 @@
 <template>
 	<div class="home">
+		<loading v-if="isShow"></loading>
 		<div class="title">学习</div>
 		<ul class="main">
 			<li v-for="item in dataList">
@@ -24,7 +25,8 @@
 					"JS/jQuery",
 					"MySql",
 					"PHP"
-				]
+				],
+				isShow:true
 			}
 		},
 		methods:{
@@ -33,13 +35,14 @@
 					)
 				.then(res=>{
 					this.dataList=res.data;
+					this.isShow = false;
 				}).catch(error=>console.log(error));
 			},
 			contentLimit(item) {
-				return  item.s_content.substr(0,145) + '...' ;
+				return  item.s_content.replace(/<\/?.+?>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&nbsp;/g,' ').substr(0,145) + '...' ;
 			}
 		},
-		created() {
+		mounted() {
 			this.getData();
 
 		},

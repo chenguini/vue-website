@@ -62,7 +62,7 @@
 		border-bottom: 1px solid #ddd;
 		position: fixed;
 		top: 0;
-		z-index: 10;
+		z-index: 9999;
 	}
 	.list {
 		float: left;

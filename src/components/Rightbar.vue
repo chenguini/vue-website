@@ -17,6 +17,14 @@
 					<img src="../assets/image/wchat.png" alt="">
 				</div>
 			</a>
+		</div>
+		<div class="hot">
+			<h3>热门推荐</h3>
+			<ul>
+				<li v-for="item in hotList">
+					<router-link :to="'/skill/' + item.s_id">{{item.s_title}}</router-link>
+				</li>
+			</ul>
 		</div>		
 		<div class="last">
 			<h3>最新文章</h3>
@@ -24,12 +32,6 @@
 				<li v-for="item in lastList">
 					<router-link :to="'/skill/' + item.s_id">{{item.s_title}}</router-link>
 				</li>
-			</ul>
-		</div>
-		<div class="hot">
-			<h3>热门推荐</h3>
-			<ul>
-				<li></li>
 			</ul>
 		</div>
 	</div>
@@ -41,6 +43,7 @@
 		data() {
 			return {
 				lastList:'',
+				hotList:'',
 				isTips:false
 			}
 		},
@@ -52,11 +55,19 @@
 					this.lastList=res.data;
 				}).catch(error=>console.log(error));
 			},
+			getHot() {
+				this.$http.get("http://chenguini.top/skill.php?hot=hot"
+					)
+				.then(res=>{
+					this.hotList=res.data;
+				}).catch(error=>console.log(error));
+			},
 			changeTip() {
 				this.isTips = !this.isTips;
 			}
 		},
-		created() {
+		mounted() {
+			this.getHot();
 			this.getLast();
 
 		}
@@ -100,7 +111,7 @@
 		color: #666;
 		border-top: 1px solid #ddd;
 	}
-	.last a {
+	.last a,.hot a {
 		color: #777;
 		text-align: left;
 		padding: 8px;
@@ -111,7 +122,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;/*文本溢出显示省略标记需与overflow-hidden;一起使用*/
 	}
-	.last a:hover {
+	.last a:hover,.hot a:hover {
 		color: #1E90FF;
 	}
 	.wchat {

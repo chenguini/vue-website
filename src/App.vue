@@ -13,16 +13,19 @@
 
 import headers from './components/Header'
 import footers from './components/Footer'
-import sidebar from './components/Sidebar'
 import rightbar from './components/Rightbar'
+import loading from './components/Loading'
 
 export default {
   name: 'App',
   components:{
       headers,
       footers,
-      sidebar,
-      rightbar
+      rightbar,
+      loading
+    },
+    created() {
+      document.body.removeChild(document.getElementById('loading'))
     }
 }
 </script>
@@ -60,6 +63,8 @@ a {
     border: 1px solid #ddd;
     vertical-align: top;
     font-size: 16px;
+    position: relative;
+    /*min-height: 500px;*/
   }
   .title {
     font-size: 24px;
@@ -96,6 +101,18 @@ a {
   }
   .main a>h4:hover {
     color: #1E90FF;
+  }
+  input {
+    width: 99%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    text-indent: 10px;
+  }
+  input:focus {
+    border-radius: 5px;
+    border: 1px solid #1E90FF;
   }
   @media screen and (max-width: 700px) {
     .home {

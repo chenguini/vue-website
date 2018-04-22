@@ -15,11 +15,12 @@
 			<li v-for="item in dataList">
 				<router-link :to="'/skill/' + item.s_id">
 					<h4>{{item.s_title}}</h4>
-					<p>{{contentLimit(item)}}</p>
+					<p v-text="contentLimit(item)"></p>
 					<span class="day">发布时间：{{item.s_day}}</span>
 				</router-link>
 			</li>
 		</ul>
+		<pagination :page="page" :totalPage="totalPage" v-on:listenToChildEvent="changePage"></pagination>
 	</div>
 </template>
 
@@ -28,6 +29,7 @@ import Vue from 'vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import { swiper,swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import pagination from '../components/Pagination'
 
 Vue.use(VueAwesomeSwiper)
 
@@ -65,26 +67,34 @@ Vue.use(VueAwesomeSwiper)
           				el: '.swiper-pagination',
           				clickable: true
           			}
-       			}
+       			},
+       			page:'1',
+       			totalPage:''
 			}
 		},
 		components:{
 			swiper,
-			swiperSlide
+			swiperSlide,
+			pagination
 		},
 		methods:{
 			getData() {
-				this.$http.get("http://chenguini.top/skill.php"
+				this.$http.get("http://chenguini.top/skill.php?page="+this.page
 					)
 				.then(res=>{
-					this.dataList=res.data;
+					this.dataList = res.data['content'];
+					this.totalPage = res.data['totalPage'];
 				}).catch(error=>console.log(error));
 			},
 			contentLimit(item) {
-				return  item.s_content.substr(0,145) + '...' ;
+				return  item.s_content.replace(/<\/?.+?>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&nbsp;/g,' ').substr(0,145) + '...' ;
+			},
+			changePage(data) {
+				this.page = data;
+				this.getData();
 			}
 		},
-		created() {
+		mounted() {
 			this.getData();
 
 		},computed: {
@@ -104,7 +114,7 @@ Vue.use(VueAwesomeSwiper)
 		height: 30%;
 		margin: 0 auto;
 	}
-	@media screen and (max-width: 700px) {
+	@media screen and (max-width: 768px) {
     .swiper {
       width: 80%;
     }

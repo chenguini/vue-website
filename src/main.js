@@ -6,9 +6,16 @@ import router from './router'
 import Icon from 'vue-svg-icon/Icon.vue'
 import axios from 'axios'
 
+import '../static/UE/ueditor.config.js'
+import '../static/UE/ueditor.all.js'
+import '../static/UE/lang/zh-cn/zh-cn.js'
+import '../static/UE/ueditor.parse.min.js'
+
 Vue.config.productionTip = false
 Vue.component('icon', Icon)
 Vue.prototype.$http = axios
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

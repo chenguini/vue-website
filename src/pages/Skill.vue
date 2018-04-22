@@ -1,21 +1,28 @@
 <template>
 	<div class="home">
+		<loading v-if="isShow"></loading>
 		<div class="content-box">
 			<h3>{{dataList.s_title}}</h3>
 			<span>发布日期：{{dataList.s_day}}</span>
-			<pre >{{dataList.s_content}}</pre>
+			<div v-html="dataList.s_content"></div>
 		</div>
-		
 	</div>
 </template>
 
 <script>
+
+import loading from '../components/Loading'
+
 	export default {
 		name:'skill',
 		data (){
 			return {
-				dataList:""
+				dataList:"",
+				isShow:true
 			}
+		},
+		components:{
+			loading
 		},
 		methods:{
 			getData() {
@@ -23,12 +30,12 @@
 					)
 				.then(res=>{
 					this.dataList=res.data;
-
-					console.log(this.dataList);
+					this.isShow = false;
+					// console.log(this.dataList);
 				}).catch(error=>console.log(error));
 			}
 		},
-		created() {
+		mounted() {
 			this.getData();
 
 		},
@@ -47,7 +54,7 @@
 		text-align: center;
 		padding: 30px;
 	}
-	.content-box pre { 
+	.content-box div { 
 		white-space: pre-wrap; /*css-3*/ 
 		white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
 		white-space: -pre-wrap; /*Opera4-6*/ 
@@ -62,5 +69,11 @@
 		color: #999;
 		text-align: right;
 		padding-right: 10px;
+	}
+	.fade-enter-active, .fade-leave-active {
+		transition: opacity 5s;
+	}
+	.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+		opacity: 0;
 	}
 </style>

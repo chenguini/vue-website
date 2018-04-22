@@ -1,5 +1,6 @@
 <template>
 	<div class="home">
+		<loading v-if="isShow"></loading>
 		<div class="title">生活</div>
 		<ul class="main">
 			<li v-for="item in dataList">
@@ -18,7 +19,8 @@
 		name:'day',
 		data (){
 			return {
-				dataList:''
+				dataList:'',
+				isShow:true
 			}
 		},
 		methods:{
@@ -27,17 +29,18 @@
 					)
 				.then(res=>{
 					this.dataList=res.data;
+					this.isShow = false;
 				}).catch(error=>console.log(error));
 			},
 			contentLimit(item) {
 				if (item.d_content.length>145) {
-					return  item.d_content.substr(0,145) + '...' ;
+					return  item.d_content.replace(/<\/?.+?>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&nbsp;/g,' ').substr(0,145) + '...' ;
 				}else {
 					return item.d_content;
 				}
 			}
 		},
-		created() {
+		mounted() {
 			this.getData();
 
 		},
