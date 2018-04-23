@@ -31,6 +31,7 @@
 		},
 		methods:{
 			getData() {
+				this.isShow = true;
 				this.$http.get("http://chenguini.top/skill.php?s_cate=" + this.$route.params.index
 					)
 				.then(res=>{

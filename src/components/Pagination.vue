@@ -54,7 +54,7 @@
 <style scoped>
 	.pagination {
 		position: relative;
-		top: 50px;
+		margin-top: 50px;
 		text-align: center;
 	}
 	.pagination li {

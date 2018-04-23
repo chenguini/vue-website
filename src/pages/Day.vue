@@ -25,6 +25,7 @@
 		},
 		methods:{
 			getData() {
+				this.isShow = true;
 				this.$http.get("http://chenguini.top/skill.php?day=day"
 					)
 				.then(res=>{

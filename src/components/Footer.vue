@@ -23,7 +23,7 @@
 <style scoped>
   .footer {
     margin-top: 20px;
-    clear: both;
+    overflow: hidden;
   }
   .icon {
     width: 37px;

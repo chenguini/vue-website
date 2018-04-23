@@ -1,6 +1,7 @@
 <template>
 	
 	<div class="home">
+		<loading v-if="isShow"></loading>
 		<div class="swiper">
 			<swiper :options="swiperOption">
 				<swiper-slide v-for="(item,index) in pic" :key=index>
@@ -69,7 +70,8 @@ Vue.use(VueAwesomeSwiper)
           			}
        			},
        			page:'1',
-       			totalPage:''
+       			totalPage:'',
+				isShow:true
 			}
 		},
 		components:{
@@ -79,11 +81,13 @@ Vue.use(VueAwesomeSwiper)
 		},
 		methods:{
 			getData() {
+				this.isShow = true;
 				this.$http.get("http://chenguini.top/skill.php?page="+this.page
 					)
 				.then(res=>{
 					this.dataList = res.data['content'];
 					this.totalPage = res.data['totalPage'];
+					this.isShow = false;
 				}).catch(error=>console.log(error));
 			},
 			contentLimit(item) {

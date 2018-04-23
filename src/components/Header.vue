@@ -62,7 +62,8 @@
 		border-bottom: 1px solid #ddd;
 		position: fixed;
 		top: 0;
-		z-index: 9999;
+		z-index: 2000;
+		font-size: 16px;
 	}
 	.list {
 		float: left;
@@ -86,7 +87,7 @@
 	.name {
 		float: left;
 		line-height: 57px;
-		font-size: 24px;
+		font-size: 20px;
 		margin-left: 5px;
 		color: #000;
 	}
@@ -138,10 +139,16 @@
 			line-height: 90px;
 			margin-left: 20px;
 		}
-		.learn a{
+		.learn a {
 			color: #333;
 			display: block;
 			padding: 5px 10px;
+		}
+		.name {
+			font-size: 16px;
+		}
+		.header {
+			font-size: 15px;
 		}
 	}
 	

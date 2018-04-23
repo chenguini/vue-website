@@ -6,6 +6,7 @@
       <rightbar />
     </div>
     <footers></footers>
+    <gototop></gototop>
   </div>
 </template>
 
@@ -14,7 +15,7 @@
 import headers from './components/Header'
 import footers from './components/Footer'
 import rightbar from './components/Rightbar'
-import loading from './components/Loading'
+import gototop from './components/goToTop'
 
 export default {
   name: 'App',
@@ -22,7 +23,7 @@ export default {
       headers,
       footers,
       rightbar,
-      loading
+      gototop
     },
     created() {
       document.body.removeChild(document.getElementById('loading'))
@@ -46,7 +47,8 @@ body {
 }
 
 #app {
-  font-family: Microsoft YaHei,Arial,"Arial Narrow",Georgia,Helvetica,sans-serif;
+  font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -60,14 +62,13 @@ a {
     width: 55%;
     text-align: left;
     display: inline-block;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     vertical-align: top;
-    font-size: 16px;
     position: relative;
     /*min-height: 500px;*/
   }
   .title {
-    font-size: 24px;
+    font-size: 18px;
     color: #555;
   }
 .main a,.title {
@@ -78,8 +79,10 @@ a {
     overflow: hidden;
   }
   .main h4 {
-    padding: 5px;
     color: #222;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 25px;
   }
   .main p {
     overflow:hidden; /*
@@ -88,11 +91,13 @@ a {
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2; */
     margin: 5px;
-    color: #666;
+    color: #777;
+    line-height: 24px;
   }
   .day {
     display: block;
     text-align: right;
+    font-size: 13px;
     color: #999;
     margin-right: 10px;
   }
@@ -117,6 +122,16 @@ a {
   @media screen and (max-width: 700px) {
     .home {
       width: 80%;
+    }
+    .main p {
+      font-size: 13px;
+      line-height: 20px;
+    }
+    .main h4 {
+      font-size: 14px;
+    }
+    .day {
+      font-size: 12px;
     }
   }
 

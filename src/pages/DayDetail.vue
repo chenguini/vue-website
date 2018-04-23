@@ -21,6 +21,7 @@
 		},
 		methods:{
 			getData() {
+				this.isShow = true;
 				this.$http.get("http://chenguini.top/skill.php?d_id=" + this.$route.params.d_id
 					)
 				.then(res=>{
@@ -66,4 +67,18 @@
 		text-align: right;
 		padding-right: 10px;
 	}
+	@media screen and (max-width: 700px) {
+    .content-box {
+		margin: 10px 5px;
+	}
+	.content-box h3 {
+		padding: 10px;
+	}
+	.content-box div { 
+		margin: 5px;
+	} 
+	.content-box span {
+		padding-right: 5px;
+	}
+  }
 </style>

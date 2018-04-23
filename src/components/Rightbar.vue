@@ -79,13 +79,12 @@
 		width: 22%;
 		display: inline-block;
 		vertical-align: top;
-		font-size: 16px;
+		font-size: 14px;
 		margin-left: 20px;
 	}
 	.connect {
 		display: flex;
 		display:-webkit-flex;
-		margin-bottom: 8px;
 
 	}
 	.connect a {
@@ -107,9 +106,11 @@
 	h3 {
 		padding: 10px 8px;
 		text-align: left;
-		font-size: 18px;
+		font-size: 16px;
+		font-weight: normal;
 		color: #666;
 		border-top: 1px solid #ddd;
+		margin-top: 18px;
 	}
 	.last a,.hot a {
 		color: #777;
@@ -121,6 +122,9 @@
 		white-space: nowrap;/*不换行*/
 		overflow: hidden;
 		text-overflow: ellipsis;/*文本溢出显示省略标记需与overflow-hidden;一起使用*/
+	}
+	.hot li:last-child a,.last li:last-child a{
+		border-bottom: none;
 	}
 	.last a:hover,.hot a:hover {
 		color: #1E90FF;

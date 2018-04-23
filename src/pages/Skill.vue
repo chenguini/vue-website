@@ -11,7 +11,6 @@
 
 <script>
 
-import loading from '../components/Loading'
 
 	export default {
 		name:'skill',
@@ -21,11 +20,9 @@ import loading from '../components/Loading'
 				isShow:true
 			}
 		},
-		components:{
-			loading
-		},
 		methods:{
 			getData() {
+				this.isShow = true;
 				this.$http.get("http://chenguini.top/skill.php?s_id=" + this.$route.params.s_id
 					)
 				.then(res=>{
@@ -49,12 +46,12 @@ import loading from '../components/Loading'
 	.content-box {
 		margin: 30px 20px;
 	}
-	.content-box h3 {
+	.content-box>h3 {
 		color: #555;
 		text-align: center;
 		padding: 30px;
 	}
-	.content-box div { 
+	.content-box>div { 
 		white-space: pre-wrap; /*css-3*/ 
 		white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
 		white-space: -pre-wrap; /*Opera4-6*/ 
@@ -64,7 +61,7 @@ import loading from '../components/Loading'
 		text-align: left;
 		color: #333;
 	} 
-	.content-box span {
+	.content-box>span {
 		display: block;
 		color: #999;
 		text-align: right;
@@ -76,4 +73,18 @@ import loading from '../components/Loading'
 	.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
 		opacity: 0;
 	}
+	@media screen and (max-width: 700px) {
+    .content-box {
+		margin: 10px 5px;
+	}
+	.content-box h3 {
+		padding: 10px;
+	}
+	.content-box div { 
+		margin: 5px;
+	} 
+	.content-box span {
+		padding-right: 5px;
+	}
+  }
 </style>

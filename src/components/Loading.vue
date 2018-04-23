@@ -18,9 +18,10 @@
 <style>
 	#loading {
 		text-align: center;
-		position: absolute;
+		position: fixed;
 		top: 50%;
 		left: 50%;
+		z-index: 9999;
 		transform: translate(-50%,-50%);
 	}
 	#loading img {
